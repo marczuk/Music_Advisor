@@ -11,7 +11,8 @@ public class HelpCommand extends Command{
         this.loginRequired = false;
     }
 
-    private String helpMessage = "The program is connecting to spotify API to get info about your favourite music";
+    private String helpMessage = "The program is connecting to spotify API to get info about your favourite music"
+            + "\navailable commands: auth | help | playlists | new | featured | categories | exit";
 
     @Override
     public void handle() {
