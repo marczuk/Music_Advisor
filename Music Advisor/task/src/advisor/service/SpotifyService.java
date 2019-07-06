@@ -8,10 +8,13 @@ public class SpotifyService {
 
     private static  String redirect_uri = "http://localhost:8765/";
     private static  String uri = "https://accounts.spotify.com/";
+    private static  String dataUri = "https://api.spotify.com/";
+    private static  String dataUriVersion = "v1/browse/";
     private static  String authorize = "authorize";
     private static  String token = "api/token";
-    private static  String client_id = "3c1f0675fb224be6807fdd578f1d84cb";
-    private static  String client_secret = "97cdf492b8934099a263ddd75f02d3ca";
+
+    private static  String clientId = "3c1f0675fb224be6807fdd578f1d84cb";
+    private static  String clientSecret = "97cdf492b8934099a263ddd75f02d3ca";
 
     private static String userAccessToken = "";
 
@@ -24,7 +27,7 @@ public class SpotifyService {
     public static String getAuthorizationUrl() {
         //
         //
-        setUserAccessToken("testestest");
+        //setUserAccessToken("testestest");
         //
         //
 
@@ -32,10 +35,14 @@ public class SpotifyService {
         authUrl.append(uri)
                 .append(authorize)
                 .append("?response_type=code")
-                .append("&").append("client_id=").append(client_id)
+                .append("&").append("client_id=").append(getClientId())
                 .append("&").append("redirect_uri=").append(redirect_uri);
 
         return authUrl.toString();
+    }
+
+    public static String getDataUri() {
+        return dataUri + dataUriVersion;
     }
 
     public static String getTokenUrl() {
@@ -43,11 +50,6 @@ public class SpotifyService {
         StringBuilder authUrl = new StringBuilder();
         authUrl.append(uri)
                 .append(token)
-//                .append("?grant_type=authorization_code")
-//                .append("&").append("code=").append(appCode)
-//                .append("&").append("redirect_uri=").append(redirect_uri)
-//                .append("&").append("client_id=").append(client_id)
-//                .append("&").append("client_secret=").append(client_secret)
         ;
 
         return authUrl.toString();
@@ -59,8 +61,6 @@ public class SpotifyService {
         returnParams.put("grant_type", "authorization_code");
         returnParams.put("code", appCode);
         returnParams.put("redirect_uri", redirect_uri);
-        returnParams.put("client_id", client_id);
-        returnParams.put("client_secret", client_secret);
 
         return returnParams;
     }
@@ -68,5 +68,26 @@ public class SpotifyService {
     public static void setUserAccessToken(String accessToken){
 
         userAccessToken = accessToken;
+    }
+
+    public static String getUserAccessToken() {
+        return getUserAccessToken(false);
+    }
+
+    public static String getUserAccessToken(boolean refreshToken){
+        if (refreshToken) {
+            //TODO::handle autorefreshing token process
+            //setUserAccessToken();
+        }
+
+        return userAccessToken;
+    }
+
+    public static String getClientId() {
+        return clientId;
+    }
+
+    public static String getClientSecret() {
+        return clientSecret;
     }
 }

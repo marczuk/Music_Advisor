@@ -1,5 +1,7 @@
 package advisor.command;
 
+import advisor.request.NewReleasesRequest;
+
 public class NewCommand extends Command{
 
 //    static {
@@ -17,6 +19,12 @@ public class NewCommand extends Command{
     public void handle() {
 
         System.out.println(title);
-        System.out.println(message);
+        //System.out.println(message);
+
+        NewReleasesRequest newReleasesRequest = new NewReleasesRequest();
+
+        String result = newReleasesRequest.execute();
+
+        System.out.println(result);
     }
 }

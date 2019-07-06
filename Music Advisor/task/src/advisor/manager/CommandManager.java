@@ -40,7 +40,7 @@ public class CommandManager {
 
     private void startCommand(String line) throws InvalidInputException {
         Command command = commandFactory.getCommand(line);
-        if (!command.isLoginRequired() || (command.isLoginRequired() && SpotifyService.isUserLogged())) {
+        if (!command.isLoginRequired() || SpotifyService.isUserLogged()) {
             command.handle();
         }
         else {

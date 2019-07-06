@@ -309,7 +309,7 @@
           <option name="items">
             <list>
               <FrameworkLesson>
-                <option name="currentTaskIndex" value="2" />
+                <option name="currentTaskIndex" value="3" />
                 <option name="customPresentableName" />
                 <option name="id" value="0" />
                 <option name="index" value="1" />
@@ -691,8 +691,8 @@
                       <option name="id" value="5479" />
                       <option name="index" value="3" />
                       <option name="name" value="Useful connections" />
-                      <option name="record" value="-1" />
-                      <option name="status" value="Failed" />
+                      <option name="record" value="3" />
+                      <option name="status" value="Solved" />
                       <option name="stepikChangeStatus" value="Info and Content changed" />
                       <option name="files">
                         <map>
@@ -984,8 +984,8 @@
                       <option name="index" value="4" />
                       <option name="name" value="Processing links" />
                       <option name="record" value="-1" />
-                      <option name="status" value="Unchecked" />
-                      <option name="stepikChangeStatus" value="Up to date" />
+                      <option name="status" value="Failed" />
+                      <option name="stepikChangeStatus" value="Info and Content changed" />
                       <option name="files">
                         <map>
                           <entry key="test/MusicAdvisorTest.java">
@@ -1009,7 +1009,7 @@
                                 <option name="answerPlaceholders">
                                   <list />
                                 </option>
-                                <option name="highlightErrors" value="false" />
+                                <option name="highlightErrors" value="true" />
                                 <option name="name" value="src/advisor/Main.java" />
                                 <option name="text" value="package advisor;&#10;&#10;import advisor.manager.CommandManager;&#10;&#10;import java.io.FileInputStream;&#10;import java.io.FileNotFoundException;&#10;import java.io.IOException;&#10;import java.io.InputStream;&#10;import java.net.URL;&#10;import java.util.Arrays;&#10;import java.util.Properties;&#10;import java.util.Scanner;&#10;&#10;public class Main {&#10;&#10;    CommandManager commandManager;&#10;    Properties appConfig;&#10;&#10;    public Main() {&#10;        Scanner scanner = new Scanner(System.in);&#10;        this.commandManager = new CommandManager(scanner);&#10;        //this.appConfig = loadConfig();&#10;    }&#10;&#10;    public static void main(String[] args) {&#10;        Main application = new Main();&#10;        application.start();&#10;    }&#10;&#10;    public void start() {&#10;        commandManager.executeLine();&#10;    }&#10;&#10;    private Properties loadConfig() {&#10;        Properties appConfig = new Properties();&#10;        try {&#10;            // load the properties file using load() and an input stream&#10;            //FileInputStream in = new FileInputStream(&quot;resources/config.properties&quot;);&#10;            ClassLoader classLoader = getClass().getClassLoader();&#10;            URL resource = classLoader.getResource(&quot;/Music Advisor/task/src/advisor/config.properties&quot;);&#10;&#10;            System.out.println(resource);&#10;            System.out.println(&quot;----------------------------&quot;);&#10;&#10;            InputStream in = getClass()&#10;                    .getClassLoader().getResourceAsStream(&quot;/config.properties&quot;);&#10;            appConfig.load(in);&#10;            in.close();&#10;&#10;            appConfig.list(System.out);&#10;&#10;&#10;        } catch (IOException e) {&#10;            e.printStackTrace();&#10;        }&#10;&#10;        return appConfig;&#10;    }&#10;&#10;}&#10;" />
                                 <option name="trackChanges" value="true" />
@@ -1024,7 +1024,7 @@
                                 <option name="answerPlaceholders">
                                   <list />
                                 </option>
-                                <option name="highlightErrors" value="false" />
+                                <option name="highlightErrors" value="true" />
                                 <option name="name" value="build.gradle" />
                                 <option name="text" value="apply plugin: 'java'&#10;apply plugin: 'application'&#10;&#10;group 'advisor'&#10;version '1.0-SNAPSHOT'&#10;&#10;sourceCompatibility = 11&#10;mainClassName = 'advisor.Main'&#10;&#10;repositories {&#10;    mavenCentral()&#10;}&#10;&#10;dependencies {&#10;    compile 'com.google.code.gson:gson:+'&#10;}&#10;&#10;jar {&#10;    manifest {&#10;        attributes 'Main-Class' : 'advisor.Main'&#10;    }&#10;    from {&#10;        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }&#10;    }&#10;}" />
                                 <option name="trackChanges" value="true" />
@@ -1039,7 +1039,7 @@
                                 <option name="answerPlaceholders">
                                   <list />
                                 </option>
-                                <option name="highlightErrors" value="false" />
+                                <option name="highlightErrors" value="true" />
                                 <option name="name" value="src/advisor/manager/CommandManager.java" />
                                 <option name="text" value="package advisor.manager;&#10;&#10;import advisor.command.Command;&#10;import advisor.command.CommandFactory;&#10;import advisor.exception.InvalidInputException;&#10;import advisor.service.SpotifyService;&#10;&#10;import java.util.Scanner;&#10;&#10;public class CommandManager {&#10;&#10;    CommandFactory commandFactory;&#10;    Scanner scanner;&#10;    boolean getNextLine = true;&#10;&#10;    boolean userLogged = false;&#10;&#10;    public CommandManager(Scanner scanner) {&#10;        this.scanner = scanner;&#10;        this.commandFactory = new CommandFactory();&#10;    }&#10;&#10;    public void executeLine()&#10;    {&#10;        String nextLine = getNextLine();&#10;        if (!nextLine.isEmpty()) {&#10;&#10;            try {&#10;                startCommand(nextLine);&#10;            } catch (Exception e) {&#10;                System.out.println(e.getMessage());&#10;&#10;            }&#10;        }&#10;&#10;        if (getNextLine) {&#10;            executeLine();&#10;        }&#10;    }&#10;&#10;    private void startCommand(String line) throws InvalidInputException {&#10;        Command command = commandFactory.getCommand(line);&#10;        if (!command.isLoginRequired() || (command.isLoginRequired() &amp;&amp; SpotifyService.isUserLogged())) {&#10;            command.handle();&#10;        }&#10;        else {&#10;            System.out.println(&quot;Please, provide access for application.&quot;);&#10;        }&#10;&#10;        if (command.isExitCommand()) {&#10;            getNextLine = false;&#10;        }&#10;    }&#10;&#10;    private String getNextLine() {&#10;        return scanner.nextLine();&#10;    }&#10;&#10;}&#10;" />
                                 <option name="trackChanges" value="true" />
@@ -1144,7 +1144,7 @@
                                 <option name="answerPlaceholders">
                                   <list />
                                 </option>
-                                <option name="highlightErrors" value="false" />
+                                <option name="highlightErrors" value="true" />
                                 <option name="name" value="src/advisor/command/NewCommand.java" />
                                 <option name="text" value="package advisor.command;&#10;&#10;public class NewCommand extends Command{&#10;&#10;//    static {&#10;//        name = &quot;/help&quot;;&#10;//    }&#10;//    protected static String name = &quot;/help&quot;;&#10;&#10;    private String title = &quot;---NEW RELEASES---&quot;;&#10;    private String message = &quot;Mountains [Sia, Diplo, Labrinth]\n&quot; +&#10;            &quot;Runaway [Lil Peep]\n&quot; +&#10;            &quot;The Greatest Show [Panic! At The Disco]\n&quot; +&#10;            &quot;All Out Life [Slipknot]&quot;;&#10;&#10;    @Override&#10;    public void handle() {&#10;&#10;        System.out.println(title);&#10;        System.out.println(message);&#10;    }&#10;}&#10;" />
                                 <option name="trackChanges" value="true" />
@@ -1189,7 +1189,7 @@
                                 <option name="answerPlaceholders">
                                   <list />
                                 </option>
-                                <option name="highlightErrors" value="false" />
+                                <option name="highlightErrors" value="true" />
                                 <option name="name" value="src/advisor/command/AuthCommand.java" />
                                 <option name="text" value="package advisor.command;&#10;&#10;import advisor.service.SpotifyService;&#10;&#10;public class AuthCommand extends Command{&#10;&#10;//    protected static String name = &quot;/help&quot;;&#10;&#10;    private SpotifyService spotifyService;&#10;&#10;    private String title = &quot;&quot;;&#10;    private String message =  &quot;&quot;;&#10;&#10;    public AuthCommand() {&#10;        this.loginRequired = false;&#10;        spotifyService = new SpotifyService();&#10;    }&#10;&#10;    @Override&#10;    public void handle() {&#10;&#10;        System.out.println(spotifyService.getAuthorizationUrl());&#10;        System.out.println(&quot;---SUCCESS---&quot;);&#10;    }&#10;&#10;}&#10;" />
                                 <option name="trackChanges" value="true" />
@@ -1204,7 +1204,7 @@
                                 <option name="answerPlaceholders">
                                   <list />
                                 </option>
-                                <option name="highlightErrors" value="false" />
+                                <option name="highlightErrors" value="true" />
                                 <option name="name" value="src/advisor/service/SpotifyService.java" />
                                 <option name="text" value="package advisor.service;&#10;&#10;public class SpotifyService {&#10;&#10;    private static String redirect_uri = &quot;https://www.example.com&amp;response_type=code&quot;;&#10;    private static String uri = &quot;https://accounts.spotify.com/authorize?&quot;;&#10;    private static String client_id = &quot;3c1f0675fb224be6807fdd578f1d84cb&quot;;&#10;    private static String client_secret = &quot;97cdf492b8934099a263ddd75f02d3ca&quot;;&#10;&#10;&#10;    private static boolean userLogged = false;&#10;&#10;    public static boolean isUserLogged() {&#10;        return userLogged;&#10;    }&#10;&#10;    public String getAuthorizationUrl() {&#10;&#10;        StringBuilder authUrl = new StringBuilder();&#10;        authUrl.append(uri)&#10;                .append(&quot;client_id=&quot;).append(client_id)&#10;                .append(&quot;&amp;&quot;).append(&quot;redirect_uri=&quot;).append(redirect_uri);&#10;&#10;        //for now change flag right after gen auth link&#10;        userLogged = true;&#10;&#10;        return authUrl.toString();&#10;    }&#10;}&#10;" />
                                 <option name="trackChanges" value="true" />
@@ -1252,6 +1252,141 @@
                                 <option name="highlightErrors" value="false" />
                                 <option name="name" value="src/advisor/config.properties" />
                                 <option name="text" value="service.spotify.url = https://accounts.spotify.com/authorize?&#10;service.spotify.redirect_uri = https://www.example.com&#10;" />
+                                <option name="trackChanges" value="true" />
+                                <option name="trackLengths" value="true" />
+                                <option name="visible" value="true" />
+                              </TaskFile>
+                            </value>
+                          </entry>
+                          <entry key="src/advisor/request/AbstractRequest.java">
+                            <value>
+                              <TaskFile>
+                                <option name="answerPlaceholders">
+                                  <list />
+                                </option>
+                                <option name="highlightErrors" value="true" />
+                                <option name="name" value="src/advisor/request/AbstractRequest.java" />
+                                <option name="text" value="" />
+                                <option name="trackChanges" value="true" />
+                                <option name="trackLengths" value="true" />
+                                <option name="visible" value="true" />
+                              </TaskFile>
+                            </value>
+                          </entry>
+                          <entry key="src/advisor/request/AuthRequest.java">
+                            <value>
+                              <TaskFile>
+                                <option name="answerPlaceholders">
+                                  <list />
+                                </option>
+                                <option name="highlightErrors" value="true" />
+                                <option name="name" value="src/advisor/request/AuthRequest.java" />
+                                <option name="text" value="" />
+                                <option name="trackChanges" value="true" />
+                                <option name="trackLengths" value="true" />
+                                <option name="visible" value="true" />
+                              </TaskFile>
+                            </value>
+                          </entry>
+                          <entry key="src/advisor/request/NewReleasesRequest.java">
+                            <value>
+                              <TaskFile>
+                                <option name="answerPlaceholders">
+                                  <list />
+                                </option>
+                                <option name="highlightErrors" value="true" />
+                                <option name="name" value="src/advisor/request/NewReleasesRequest.java" />
+                                <option name="text" value="" />
+                                <option name="trackChanges" value="true" />
+                                <option name="trackLengths" value="true" />
+                                <option name="visible" value="true" />
+                              </TaskFile>
+                            </value>
+                          </entry>
+                          <entry key="src/advisor/object/Albums.java">
+                            <value>
+                              <TaskFile>
+                                <option name="answerPlaceholders">
+                                  <list />
+                                </option>
+                                <option name="highlightErrors" value="true" />
+                                <option name="name" value="src/advisor/object/Albums.java" />
+                                <option name="text" value="" />
+                                <option name="trackChanges" value="true" />
+                                <option name="trackLengths" value="true" />
+                                <option name="visible" value="true" />
+                              </TaskFile>
+                            </value>
+                          </entry>
+                          <entry key="src/advisor/object/Artist.java">
+                            <value>
+                              <TaskFile>
+                                <option name="answerPlaceholders">
+                                  <list />
+                                </option>
+                                <option name="highlightErrors" value="true" />
+                                <option name="name" value="src/advisor/object/Artist.java" />
+                                <option name="text" value="" />
+                                <option name="trackChanges" value="true" />
+                                <option name="trackLengths" value="true" />
+                                <option name="visible" value="true" />
+                              </TaskFile>
+                            </value>
+                          </entry>
+                          <entry key="src/advisor/object/ExternalUrls.java">
+                            <value>
+                              <TaskFile>
+                                <option name="answerPlaceholders">
+                                  <list />
+                                </option>
+                                <option name="highlightErrors" value="true" />
+                                <option name="name" value="src/advisor/object/ExternalUrls.java" />
+                                <option name="text" value="" />
+                                <option name="trackChanges" value="true" />
+                                <option name="trackLengths" value="true" />
+                                <option name="visible" value="true" />
+                              </TaskFile>
+                            </value>
+                          </entry>
+                          <entry key="src/advisor/object/Image.java">
+                            <value>
+                              <TaskFile>
+                                <option name="answerPlaceholders">
+                                  <list />
+                                </option>
+                                <option name="highlightErrors" value="true" />
+                                <option name="name" value="src/advisor/object/Image.java" />
+                                <option name="text" value="" />
+                                <option name="trackChanges" value="true" />
+                                <option name="trackLengths" value="true" />
+                                <option name="visible" value="true" />
+                              </TaskFile>
+                            </value>
+                          </entry>
+                          <entry key="src/advisor/object/Item.java">
+                            <value>
+                              <TaskFile>
+                                <option name="answerPlaceholders">
+                                  <list />
+                                </option>
+                                <option name="highlightErrors" value="true" />
+                                <option name="name" value="src/advisor/object/Item.java" />
+                                <option name="text" value="" />
+                                <option name="trackChanges" value="true" />
+                                <option name="trackLengths" value="true" />
+                                <option name="visible" value="true" />
+                              </TaskFile>
+                            </value>
+                          </entry>
+                          <entry key="src/advisor/object/ResponseWrapper.java">
+                            <value>
+                              <TaskFile>
+                                <option name="answerPlaceholders">
+                                  <list />
+                                </option>
+                                <option name="highlightErrors" value="true" />
+                                <option name="name" value="src/advisor/object/ResponseWrapper.java" />
+                                <option name="text" value="" />
                                 <option name="trackChanges" value="true" />
                                 <option name="trackLengths" value="true" />
                                 <option name="visible" value="true" />

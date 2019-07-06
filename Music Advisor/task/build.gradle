@@ -15,6 +15,14 @@ dependencies {
     compile 'com.google.code.gson:gson:+'
 }
 
+sourceSets {
+    main {
+        resources {
+            srcDir("src/resources")
+        }
+    }
+}
+
 jar {
     manifest {
         attributes 'Main-Class' : 'advisor.Main'

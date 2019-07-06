@@ -2,15 +2,17 @@ package advisor;
 
 import advisor.manager.CommandManager;
 import advisor.service.ServerService;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
 import java.net.URL;
-import java.util.Arrays;
-import java.util.Properties;
-import java.util.Scanner;
+import java.util.*;
+import java.util.stream.Stream;
 
 public class Main {
 
@@ -22,10 +24,12 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         this.commandManager = new CommandManager(scanner);
         serverService = new ServerService();
-        //this.appConfig = loadConfig();
+        this.appConfig = loadConfig();
     }
 
+
     public static void main(String[] args) {
+
         Main application = new Main();
         application.start();
     }
@@ -39,21 +43,32 @@ public class Main {
         try {
             // load the properties file using load() and an input stream
             //FileInputStream in = new FileInputStream("resources/config.properties");
-            ClassLoader classLoader = getClass().getClassLoader();
-            URL resource = classLoader.getResource("/Music Advisor/task/src/advisor/config.properties");
+//            ClassLoader classLoader = getClass().getClassLoader();
+//            URL resource = classLoader.getResource("/config.properties");
+//
+//            System.out.println(resource);
+//            System.out.println("----------------------------");
+//
+//            InputStream in = getClass()
+//                    .getClassLoader().getResourceAsStream("/config.properties");
+//            appConfig.load(in);
+//            in.close();
+//
+//            appConfig.list(System.out);
 
-            System.out.println(resource);
-            System.out.println("----------------------------");
+            Properties prop = new Properties();
+            String propFileName = "config.properties";
 
-            InputStream in = getClass()
-                    .getClassLoader().getResourceAsStream("/config.properties");
-            appConfig.load(in);
-            in.close();
+            InputStream inputStream = getClass().getClassLoader().getResourceAsStream(propFileName);
 
-            appConfig.list(System.out);
+            if (inputStream != null) {
+                prop.load(inputStream);
+            } else {
+                throw new FileNotFoundException("property file '" + propFileName + "' not found in the classpath");
+            }
+            System.out.println(prop.getProperty("service.spotify.url"));
 
-
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
