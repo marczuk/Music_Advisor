@@ -1,5 +1,7 @@
 package advisor.command;
 
+import advisor.request.FeaturedRequest;
+
 public class FeaturedCommand extends Command{
 
 //    static {
@@ -17,7 +19,12 @@ public class FeaturedCommand extends Command{
     public void handle() {
 
         System.out.println(title);
+//System.out.println(message);
 
-        System.out.println(message);
+        FeaturedRequest request = new FeaturedRequest();
+
+        String result = request.execute();
+
+        System.out.println(result);
     }
 }

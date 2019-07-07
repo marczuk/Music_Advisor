@@ -1,24 +1,26 @@
 package advisor.request;
 
-import advisor.object.AlbumsWrapper;
-import advisor.object.Item;
+import advisor.object.CategoriesItem;
+import advisor.object.CategoriesWrapper;
+import advisor.object.PlaylistItem;
+import advisor.object.PlaylistWrapper;
 import advisor.service.SpotifyService;
 
 import java.net.http.HttpResponse;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-public class NewReleasesRequest extends AbstractRequest {
+public class CategoriesRequest extends AbstractRequest {
 
     {
-        path = SpotifyService.getDataUri() + "new-releases";
+        path = SpotifyService.getDataUri() + "categories";
     }
 
-    public NewReleasesRequest() {
+    public CategoriesRequest() {
         super();
     }
 
-    public NewReleasesRequest(Map<String, String> requestParams) {
+    public CategoriesRequest(Map<String, String> requestParams) {
         super(requestParams);
     }
 
@@ -34,12 +36,12 @@ public class NewReleasesRequest extends AbstractRequest {
             e.printStackTrace();
         }
 
-        AlbumsWrapper rw = gson.fromJson(result,
-                AlbumsWrapper.class);
+        CategoriesWrapper rw = gson.fromJson(result,
+                CategoriesWrapper.class);
 
-        return rw.getAlbums().getItems()
+        return rw.getCategories().getItems()
                 .stream()
-                .map(Item::toString)
+                .map(CategoriesItem::toString)
                 .collect(Collectors.joining(""));
     }
 }

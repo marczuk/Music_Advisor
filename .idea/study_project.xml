@@ -1129,7 +1129,7 @@
                                 <option name="answerPlaceholders">
                                   <list />
                                 </option>
-                                <option name="highlightErrors" value="false" />
+                                <option name="highlightErrors" value="true" />
                                 <option name="name" value="src/advisor/command/FeaturedCommand.java" />
                                 <option name="text" value="package advisor.command;&#10;&#10;public class FeaturedCommand extends Command{&#10;&#10;//    static {&#10;//        name = &quot;/help&quot;;&#10;//    }&#10;//    protected static String name = &quot;/help&quot;;&#10;&#10;    private String title = &quot;---FEATURED---&quot;;&#10;    private String message = &quot;Mellow Morning\n&quot; +&#10;            &quot;Wake Up and Smell the Coffee\n&quot; +&#10;            &quot;Monday Motivation\n&quot; +&#10;            &quot;Songs to Sing in the Shower&quot;;&#10;&#10;    @Override&#10;    public void handle() {&#10;&#10;        System.out.println(title);&#10;&#10;        System.out.println(message);&#10;    }&#10;}&#10;" />
                                 <option name="trackChanges" value="true" />
@@ -1159,7 +1159,7 @@
                                 <option name="answerPlaceholders">
                                   <list />
                                 </option>
-                                <option name="highlightErrors" value="false" />
+                                <option name="highlightErrors" value="true" />
                                 <option name="name" value="src/advisor/command/CategoriesCommand.java" />
                                 <option name="text" value="package advisor.command;&#10;&#10;public class CategoriesCommand extends Command{&#10;&#10;//    static {&#10;//        name = &quot;/help&quot;;&#10;//    }&#10;//    protected static String name = &quot;/help&quot;;&#10;&#10;    private String title = &quot;---CATEGORIES---&quot;;&#10;    private String message =  &quot;Top Lists\n&quot; +&#10;            &quot;Pop\n&quot; +&#10;            &quot;Mood\n&quot; +&#10;            &quot;Latin&quot;;&#10;&#10;    @Override&#10;    public void handle() {&#10;&#10;        System.out.println(title);&#10;        System.out.println(message);&#10;    }&#10;}&#10;" />
                                 <option name="trackChanges" value="true" />
@@ -1386,6 +1386,156 @@
                                 </option>
                                 <option name="highlightErrors" value="true" />
                                 <option name="name" value="src/advisor/object/ResponseWrapper.java" />
+                                <option name="text" value="" />
+                                <option name="trackChanges" value="true" />
+                                <option name="trackLengths" value="true" />
+                                <option name="visible" value="true" />
+                              </TaskFile>
+                            </value>
+                          </entry>
+                          <entry key="src/advisor/request/FeaturedRequest.java">
+                            <value>
+                              <TaskFile>
+                                <option name="answerPlaceholders">
+                                  <list />
+                                </option>
+                                <option name="highlightErrors" value="true" />
+                                <option name="name" value="src/advisor/request/FeaturedRequest.java" />
+                                <option name="text" value="" />
+                                <option name="trackChanges" value="true" />
+                                <option name="trackLengths" value="true" />
+                                <option name="visible" value="true" />
+                              </TaskFile>
+                            </value>
+                          </entry>
+                          <entry key="src/advisor/object/PlaylistWrapper.java">
+                            <value>
+                              <TaskFile>
+                                <option name="answerPlaceholders">
+                                  <list />
+                                </option>
+                                <option name="highlightErrors" value="true" />
+                                <option name="name" value="src/advisor/object/PlaylistWrapper.java" />
+                                <option name="text" value="" />
+                                <option name="trackChanges" value="true" />
+                                <option name="trackLengths" value="true" />
+                                <option name="visible" value="true" />
+                              </TaskFile>
+                            </value>
+                          </entry>
+                          <entry key="src/advisor/object/PlaylistItem.java">
+                            <value>
+                              <TaskFile>
+                                <option name="answerPlaceholders">
+                                  <list />
+                                </option>
+                                <option name="highlightErrors" value="true" />
+                                <option name="name" value="src/advisor/object/PlaylistItem.java" />
+                                <option name="text" value="" />
+                                <option name="trackChanges" value="true" />
+                                <option name="trackLengths" value="true" />
+                                <option name="visible" value="true" />
+                              </TaskFile>
+                            </value>
+                          </entry>
+                          <entry key="src/advisor/object/Owner.java">
+                            <value>
+                              <TaskFile>
+                                <option name="answerPlaceholders">
+                                  <list />
+                                </option>
+                                <option name="highlightErrors" value="true" />
+                                <option name="name" value="src/advisor/object/Owner.java" />
+                                <option name="text" value="" />
+                                <option name="trackChanges" value="true" />
+                                <option name="trackLengths" value="true" />
+                                <option name="visible" value="true" />
+                              </TaskFile>
+                            </value>
+                          </entry>
+                          <entry key="src/advisor/object/Playlists.java">
+                            <value>
+                              <TaskFile>
+                                <option name="answerPlaceholders">
+                                  <list />
+                                </option>
+                                <option name="highlightErrors" value="true" />
+                                <option name="name" value="src/advisor/object/Playlists.java" />
+                                <option name="text" value="" />
+                                <option name="trackChanges" value="true" />
+                                <option name="trackLengths" value="true" />
+                                <option name="visible" value="true" />
+                              </TaskFile>
+                            </value>
+                          </entry>
+                          <entry key="src/advisor/object/Tracks.java">
+                            <value>
+                              <TaskFile>
+                                <option name="answerPlaceholders">
+                                  <list />
+                                </option>
+                                <option name="highlightErrors" value="true" />
+                                <option name="name" value="src/advisor/object/Tracks.java" />
+                                <option name="text" value="" />
+                                <option name="trackChanges" value="true" />
+                                <option name="trackLengths" value="true" />
+                                <option name="visible" value="true" />
+                              </TaskFile>
+                            </value>
+                          </entry>
+                          <entry key="src/advisor/request/CategoriesRequest.java">
+                            <value>
+                              <TaskFile>
+                                <option name="answerPlaceholders">
+                                  <list />
+                                </option>
+                                <option name="highlightErrors" value="true" />
+                                <option name="name" value="src/advisor/request/CategoriesRequest.java" />
+                                <option name="text" value="" />
+                                <option name="trackChanges" value="true" />
+                                <option name="trackLengths" value="true" />
+                                <option name="visible" value="true" />
+                              </TaskFile>
+                            </value>
+                          </entry>
+                          <entry key="src/advisor/object/Categories.java">
+                            <value>
+                              <TaskFile>
+                                <option name="answerPlaceholders">
+                                  <list />
+                                </option>
+                                <option name="highlightErrors" value="true" />
+                                <option name="name" value="src/advisor/object/Categories.java" />
+                                <option name="text" value="" />
+                                <option name="trackChanges" value="true" />
+                                <option name="trackLengths" value="true" />
+                                <option name="visible" value="true" />
+                              </TaskFile>
+                            </value>
+                          </entry>
+                          <entry key="src/advisor/object/CategoriesWrapper.java">
+                            <value>
+                              <TaskFile>
+                                <option name="answerPlaceholders">
+                                  <list />
+                                </option>
+                                <option name="highlightErrors" value="true" />
+                                <option name="name" value="src/advisor/object/CategoriesWrapper.java" />
+                                <option name="text" value="" />
+                                <option name="trackChanges" value="true" />
+                                <option name="trackLengths" value="true" />
+                                <option name="visible" value="true" />
+                              </TaskFile>
+                            </value>
+                          </entry>
+                          <entry key="src/advisor/object/CategoriesItem.java">
+                            <value>
+                              <TaskFile>
+                                <option name="answerPlaceholders">
+                                  <list />
+                                </option>
+                                <option name="highlightErrors" value="true" />
+                                <option name="name" value="src/advisor/object/CategoriesItem.java" />
                                 <option name="text" value="" />
                                 <option name="trackChanges" value="true" />
                                 <option name="trackLengths" value="true" />
