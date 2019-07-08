@@ -25,7 +25,7 @@ public class CategoriesRequest extends AbstractRequest {
     }
 
     @Override
-    public String execute() {
+    public CategoriesWrapper execute() {
         String result = null;
 
         try {
@@ -36,12 +36,9 @@ public class CategoriesRequest extends AbstractRequest {
             e.printStackTrace();
         }
 
-        CategoriesWrapper rw = gson.fromJson(result,
+        CategoriesWrapper wrapper = gson.fromJson(result,
                 CategoriesWrapper.class);
 
-        return rw.getCategories().getItems()
-                .stream()
-                .map(CategoriesItem::toString)
-                .collect(Collectors.joining(""));
+        return wrapper;
     }
 }

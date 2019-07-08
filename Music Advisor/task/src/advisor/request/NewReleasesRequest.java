@@ -23,7 +23,7 @@ public class NewReleasesRequest extends AbstractRequest {
     }
 
     @Override
-    public String execute() {
+    public AlbumsWrapper execute() {
         String result = null;
 
         try {
@@ -34,12 +34,9 @@ public class NewReleasesRequest extends AbstractRequest {
             e.printStackTrace();
         }
 
-        AlbumsWrapper rw = gson.fromJson(result,
+        AlbumsWrapper wrapper = gson.fromJson(result,
                 AlbumsWrapper.class);
 
-        return rw.getAlbums().getItems()
-                .stream()
-                .map(Item::toString)
-                .collect(Collectors.joining(""));
+        return wrapper;
     }
 }

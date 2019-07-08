@@ -1,7 +1,9 @@
 package advisor.command;
 
+import advisor.object.CategoriesItem;
+import advisor.object.CategoriesWrapper;
 import advisor.request.CategoriesRequest;
-import advisor.request.FeaturedRequest;
+import java.util.stream.Collectors;
 
 public class CategoriesCommand extends Command{
 
@@ -10,22 +12,33 @@ public class CategoriesCommand extends Command{
 //    }
 //    protected static String name = "/help";
 
+    private static CategoriesWrapper lastCategoriesWrapper;
+
     private String title = "---CATEGORIES---";
-    private String message =  "Top Lists\n" +
-            "Pop\n" +
-            "Mood\n" +
-            "Latin";
 
     @Override
     public void handle() {
 
-        System.out.println(title);
+        //System.out.println(title);
         //System.out.println(message);
 
         CategoriesRequest request = new CategoriesRequest();
 
-        String result = request.execute();
+        lastCategoriesWrapper = request.execute();
+
+        String result = lastCategoriesWrapper.getCategories().getItems()
+                .stream()
+                .map(CategoriesItem::toString)
+                .collect(Collectors.joining(""));
 
         System.out.println(result);
+    }
+
+    public static String getCategoryIdFromLastCategoryWrapper(String name) {
+        return lastCategoriesWrapper.getCategories().getItems()
+                .stream()
+                .filter(item -> item.getName().equalsIgnoreCase(name))
+                .findAny().map(CategoriesItem::getId)
+                .orElse(null);
     }
 }

@@ -1,5 +1,11 @@
 package advisor.command;
 
+import advisor.object.PlaylistItem;
+import advisor.object.PlaylistWrapper;
+import advisor.request.CategoriesPlaylistsRequest;
+
+import java.util.stream.Collectors;
+
 public class PlaylistsCommand extends Command{
 
 //    static {
@@ -24,7 +30,31 @@ public class PlaylistsCommand extends Command{
     @Override
     public void handle() {
 
-        System.out.println(title);
-        System.out.println(message);
+        //System.out.println(title);
+
+        //get id
+        String categoryId = CategoriesCommand.getCategoryIdFromLastCategoryWrapper(categoryName);
+
+        if (categoryId != null) {
+            CategoriesPlaylistsRequest request = new CategoriesPlaylistsRequest(categoryId);
+
+            System.out.println("before execute");
+
+            PlaylistWrapper wrapper = request.execute();
+
+            String result = wrapper.getPlaylists().getItems()
+                    .stream()
+                    .map(PlaylistItem::toString)
+                    .collect(Collectors.joining(""));
+
+            System.out.println(result);
+
+        }
+        else {
+            System.out.println("There is no such category on current category page : [" + categoryName + "]");
+        }
+
+
+
     }
 }

@@ -1,6 +1,10 @@
 package advisor.command;
 
+import advisor.object.PlaylistItem;
+import advisor.object.PlaylistWrapper;
 import advisor.request.FeaturedRequest;
+
+import java.util.stream.Collectors;
 
 public class FeaturedCommand extends Command{
 
@@ -23,7 +27,11 @@ public class FeaturedCommand extends Command{
 
         FeaturedRequest request = new FeaturedRequest();
 
-        String result = request.execute();
+        PlaylistWrapper wrapper = request.execute();
+        String result = wrapper.getPlaylists().getItems()
+                .stream()
+                .map(PlaylistItem::toString)
+                .collect(Collectors.joining(""));
 
         System.out.println(result);
     }

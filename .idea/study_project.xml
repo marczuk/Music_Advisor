@@ -1054,7 +1054,7 @@
                                 <option name="answerPlaceholders">
                                   <list />
                                 </option>
-                                <option name="highlightErrors" value="false" />
+                                <option name="highlightErrors" value="true" />
                                 <option name="name" value="src/advisor/command/HelpCommand.java" />
                                 <option name="text" value="package advisor.command;&#10;&#10;public class HelpCommand extends Command{&#10;&#10;//    static {&#10;//        name = &quot;/help&quot;;&#10;//    }&#10;//    protected static String name = &quot;/help&quot;;&#10;&#10;    private String helpMessage = &quot;The program calculates the sum of numbers //n - calculator support the addition + and subtraction - operators&quot;;&#10;&#10;    @Override&#10;    public void handle() {&#10;        System.out.println(helpMessage);&#10;    }&#10;}&#10;" />
                                 <option name="trackChanges" value="true" />
@@ -1174,7 +1174,7 @@
                                 <option name="answerPlaceholders">
                                   <list />
                                 </option>
-                                <option name="highlightErrors" value="false" />
+                                <option name="highlightErrors" value="true" />
                                 <option name="name" value="src/advisor/command/PlaylistsCommand.java" />
                                 <option name="text" value="package advisor.command;&#10;&#10;public class PlaylistsCommand extends Command{&#10;&#10;//    static {&#10;//        name = &quot;/help&quot;;&#10;//    }&#10;//    protected static String name = &quot;/help&quot;;&#10;&#10;    private String categoryName;&#10;&#10;    private String title = &quot;---C_NAME PLAYLISTS---&quot;;&#10;    private String message =  &quot;Mountains [Sia, Diplo, Labrinth]\n&quot; +&#10;            &quot;Runaway [Lil Peep]\n&quot; +&#10;            &quot;The Greatest Show [Panic! At The Disco]\n&quot; +&#10;            &quot;All Out Life [Slipknot]&quot;;&#10;&#10;&#10;    public PlaylistsCommand(String parametersString) {&#10;        this.categoryName = parametersString;&#10;        title = title.replaceAll(&quot;C_NAME&quot;, this.categoryName.toUpperCase());&#10;    }&#10;&#10;    @Override&#10;    public void handle() {&#10;&#10;        System.out.println(title);&#10;        System.out.println(message);&#10;    }&#10;}&#10;" />
                                 <option name="trackChanges" value="true" />
@@ -1536,6 +1536,21 @@
                                 </option>
                                 <option name="highlightErrors" value="true" />
                                 <option name="name" value="src/advisor/object/CategoriesItem.java" />
+                                <option name="text" value="" />
+                                <option name="trackChanges" value="true" />
+                                <option name="trackLengths" value="true" />
+                                <option name="visible" value="true" />
+                              </TaskFile>
+                            </value>
+                          </entry>
+                          <entry key="src/advisor/request/CategoriesPlaylistsRequest.java">
+                            <value>
+                              <TaskFile>
+                                <option name="answerPlaceholders">
+                                  <list />
+                                </option>
+                                <option name="highlightErrors" value="true" />
+                                <option name="name" value="src/advisor/request/CategoriesPlaylistsRequest.java" />
                                 <option name="text" value="" />
                                 <option name="trackChanges" value="true" />
                                 <option name="trackLengths" value="true" />

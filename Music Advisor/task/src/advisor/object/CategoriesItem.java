@@ -54,6 +54,8 @@ public class CategoriesItem {
     public String toString() {
         return new StringBuilder()
                 .append(getName())
+                .append(" (").append(getId()).append(")")
+                .append(" - ").append(getHref())
                 .append("\n").toString();
     }
 }

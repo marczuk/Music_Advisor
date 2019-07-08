@@ -1,6 +1,10 @@
 package advisor.command;
 
+import advisor.object.AlbumsWrapper;
+import advisor.object.Item;
 import advisor.request.NewReleasesRequest;
+
+import java.util.stream.Collectors;
 
 public class NewCommand extends Command{
 
@@ -23,7 +27,11 @@ public class NewCommand extends Command{
 
         NewReleasesRequest newReleasesRequest = new NewReleasesRequest();
 
-        String result = newReleasesRequest.execute();
+        AlbumsWrapper wrapper = newReleasesRequest.execute();
+        String result = wrapper.getAlbums().getItems()
+                .stream()
+                .map(Item::toString)
+                .collect(Collectors.joining(""));
 
         System.out.println(result);
     }

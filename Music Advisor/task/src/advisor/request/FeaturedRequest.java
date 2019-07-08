@@ -1,13 +1,10 @@
 package advisor.request;
 
-import advisor.object.Item;
-import advisor.object.PlaylistItem;
 import advisor.object.PlaylistWrapper;
 import advisor.service.SpotifyService;
 
 import java.net.http.HttpResponse;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 public class FeaturedRequest extends AbstractRequest {
 
@@ -24,7 +21,7 @@ public class FeaturedRequest extends AbstractRequest {
     }
 
     @Override
-    public String execute() {
+    public PlaylistWrapper execute() {
         String result = null;
 
         try {
@@ -38,9 +35,6 @@ public class FeaturedRequest extends AbstractRequest {
         PlaylistWrapper rw = gson.fromJson(result,
                 PlaylistWrapper.class);
 
-        return rw.getPlaylists().getItems()
-                .stream()
-                .map(PlaylistItem::toString)
-                .collect(Collectors.joining(""));
+        return rw;
     }
 }
